@@ -9,9 +9,11 @@ import { useNavigate } from "react-router-dom";
 import { Typography } from "@mui/material";
 import { useContext } from "react";
 import { AuthContext } from "../../context/AuthContext";
+import { logOut } from "../../auth/firebase";
 
 export default function Navbar() {
   const { currentUser } = useContext(AuthContext);
+  // console.log(currentUser);
   const navigate = useNavigate();
   return (
     <Box sx={{ flexGrow: 1 }}>
@@ -41,7 +43,9 @@ export default function Navbar() {
                 </Button>
               </>
             ) : (
-              <Button color="inherit">Logout</Button>
+              <Button color="inherit" onClick={() => logOut()}>
+                Logout
+              </Button>
             )}
           </Box>
         </Toolbar>

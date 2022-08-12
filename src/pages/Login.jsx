@@ -13,7 +13,7 @@ import GoogleIcon from "@mui/icons-material/Google";
 import { NavLink, useNavigate } from "react-router-dom";
 import { Link } from "@mui/material";
 import { useState } from "react";
-import { signIn } from "../auth/firebase";
+import { signIn, signUpProvider } from "../auth/firebase";
 
 function Copyright(props) {
   return (
@@ -107,7 +107,12 @@ export default function Login() {
             >
               Login
             </Button>
-            <Button variant="outlined" fullWidth sx={{ mb: 2 }}>
+            <Button
+              variant="outlined"
+              fullWidth
+              sx={{ mb: 2 }}
+              onClick={() => signUpProvider(navigate)}
+            >
               <GoogleIcon sx={{ marginRight: "1rem" }} />
               Continue with Google
             </Button>
