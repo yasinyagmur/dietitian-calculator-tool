@@ -6,8 +6,12 @@ import Button from "@mui/material/Button";
 import IconButton from "@mui/material/IconButton";
 import MenuIcon from "@mui/icons-material/Menu";
 import { useNavigate } from "react-router-dom";
+import { Typography } from "@mui/material";
+import { useContext } from "react";
+import { AuthContext } from "../../context/AuthContext";
 
-export default function ButtonAppBar() {
+export default function Navbar() {
+  const { currentUser } = useContext(AuthContext);
   const navigate = useNavigate();
   return (
     <Box sx={{ flexGrow: 1 }}>
@@ -24,13 +28,21 @@ export default function ButtonAppBar() {
           </IconButton>
 
           <Button color="inherit">Hesaplamalar</Button>
+          {currentUser && <Typography>{currentUser.displayName}</Typography>}
+
           <Box>
-            <Button color="inherit" onClick={() => navigate("/login")}>
-              Login
-            </Button>
-            <Button color="inherit" onClick={() => navigate("/register")}>
-              Register
-            </Button>
+            {!currentUser ? (
+              <>
+                <Button color="inherit" onClick={() => navigate("/login")}>
+                  Login
+                </Button>
+                <Button color="inherit" onClick={() => navigate("/register")}>
+                  Register
+                </Button>
+              </>
+            ) : (
+              <Button color="inherit">Logout</Button>
+            )}
           </Box>
         </Toolbar>
       </AppBar>

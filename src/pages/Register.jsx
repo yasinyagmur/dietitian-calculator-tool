@@ -13,6 +13,7 @@ import { createTheme, ThemeProvider } from "@mui/material/styles";
 import GoogleIcon from "@mui/icons-material/Google";
 import { useState } from "react";
 import { NavLink, useNavigate } from "react-router-dom";
+import { createUser } from "../auth/firebase";
 
 function Copyright(props) {
   return (
@@ -45,13 +46,13 @@ export default function Register() {
   const [lastName, setLastName] = useState();
   const navigate = useNavigate();
 
-  // const handleSubmit = (event) => {
-  //   event.preventDefault();
-  //   const displayName = `
-  //   ${firstName} ${lastName}`;
-  //   // console.log(firstName, lastName);
-  //   createUser(email, password, navigate, displayName);
-  // };
+  const handleSubmit = (event) => {
+    event.preventDefault();
+    const displayName = `
+    ${firstName} ${lastName}`;
+    // console.log(firstName, lastName);
+    createUser(email, password, navigate, displayName);
+  };
 
   return (
     <ThemeProvider theme={theme}>
@@ -77,7 +78,7 @@ export default function Register() {
           </Typography>
           <Box
             component="form"
-            // onSubmit={handleSubmit}
+            onSubmit={handleSubmit}
             noValidate
             sx={{ mt: 1 }}
           >
