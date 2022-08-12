@@ -9,6 +9,7 @@ import {
 } from "@mui/material";
 import React from "react";
 import { useState } from "react";
+import { BmıCalculate } from "../../context/Calcute";
 
 const BMI = () => {
   const [firstName, setFirstName] = useState();
@@ -17,8 +18,11 @@ const BMI = () => {
   const [weight, setWeight] = useState();
   const [height, setHeight] = useState();
 
+  const handleSubmit = () => {
+    BmıCalculate(weight, height);
+  };
   return (
-    <Box component="form">
+    <Box component="form" onSubmit={handleSubmit}>
       <Container
         sx={{
           border: "1px solid grey",
