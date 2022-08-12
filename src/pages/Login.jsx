@@ -48,7 +48,9 @@ export default function Login() {
     event.preventDefault();
     signIn(email, password, navigate);
   };
-
+  const handleProviderLogin = () => {
+    signUpProvider(navigate);
+  };
   return (
     <ThemeProvider theme={theme}>
       <Container
@@ -111,7 +113,7 @@ export default function Login() {
               variant="outlined"
               fullWidth
               sx={{ mb: 2 }}
-              onClick={() => signUpProvider(navigate)}
+              onClick={handleProviderLogin}
             >
               <GoogleIcon sx={{ marginRight: "1rem" }} />
               Continue with Google

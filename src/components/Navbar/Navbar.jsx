@@ -24,13 +24,12 @@ export default function Navbar() {
             edge="start"
             color="inherit"
             aria-label="menu"
-            sx={{ mr: 2 }}
+            sx={{ ml: 5 }}
           >
-            <MenuIcon />
+            {currentUser && (
+              <Typography ml={2}>{currentUser.displayName}</Typography>
+            )}
           </IconButton>
-
-          <Button color="inherit">Hesaplamalar</Button>
-          {currentUser && <Typography>{currentUser.displayName}</Typography>}
 
           <Box>
             {!currentUser ? (
