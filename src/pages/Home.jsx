@@ -132,8 +132,9 @@ export default function MiniDrawer() {
           lorem. Velit sed ullamcorper morbi tincidunt. Lorem donec massa sapien
           faucibus et molestie ac.
         </Typography>
-        {setIsDoneBmi && <BMI />}
-        {/* {setIsDoneBasal&&} */}
+        {isDoneBmi && <BMI />}
+        {setIsDoneBasal}
+        {/* tıklandığında biri false diğeri true ya dönecek handleClick yazılacak */}
       </Box>
     </Box>
   );
