@@ -8,19 +8,14 @@ import {
   Typography,
 } from "@mui/material";
 import React from "react";
-import { useState } from "react";
-import { BmıCalculate } from "../../context/Calcute";
+import { CalculateContext } from "../../context/Calculate";
 
 const BMI = () => {
-  const [firstName, setFirstName] = useState();
-  const [lastName, setLastName] = useState();
-  const [age, setAge] = useState();
-  const [weight, setWeight] = useState();
-  const [height, setHeight] = useState();
+  const { setFirstName, setLastName, setAge, setWeight, setHeight } =
+    CalculateContext();
 
-  const handleSubmit = () => {
-    BmıCalculate(weight, height);
-  };
+  const handleSubmit = () => {};
+
   return (
     <Box component="form" onSubmit={handleSubmit}>
       <Container
