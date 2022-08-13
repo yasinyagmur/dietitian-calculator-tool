@@ -8,6 +8,7 @@ import {
 } from "@mui/material";
 import { useContext } from "react";
 import { CalculateContext } from "../../context/Calculate";
+import CalculateOutlinedIcon from "@mui/icons-material/CalculateOutlined";
 
 const BMI = () => {
   const {
@@ -124,7 +125,8 @@ const BMI = () => {
             variant="contained"
             sx={{ mt: 3, mb: 1.3, width: "7rem" }}
           >
-            Send
+            <CalculateOutlinedIcon />
+            Calculate
           </Button>
         </Box>
       </Container>

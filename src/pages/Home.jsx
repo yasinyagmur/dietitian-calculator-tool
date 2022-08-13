@@ -10,7 +10,9 @@ import ChevronLeftIcon from "@mui/icons-material/ChevronLeft";
 import ChevronRightIcon from "@mui/icons-material/ChevronRight";
 
 import BMI from "../components/BodyMassIndex/BMI";
-import CalculateOutlinedIcon from "@mui/icons-material/CalculateOutlined";
+import SettingsAccessibilityTwoToneIcon from "@mui/icons-material/SettingsAccessibilityTwoTone";
+import SelfImprovementIcon from "@mui/icons-material/SelfImprovement";
+import { useState } from "react";
 
 const drawerWidth = 240;
 
@@ -72,7 +74,8 @@ export default function MiniDrawer() {
     setOpen(false);
   };
 
-  const [isDone, setIsDone] = React.useState(false);
+  const [isDoneBmi, setIsDoneBmi] = useState(false);
+  const [isDoneBasal, setIsDoneBasal] = useState(false);
   return (
     <Box sx={{ display: "flex" }}>
       <CssBaseline />
@@ -95,10 +98,22 @@ export default function MiniDrawer() {
         )}
 
         <Divider />
-        <IconButton onClick={() => setIsDone(true)}>
-          <CalculateOutlinedIcon />
-          {open && <Typography variant="h6">Body Mass Index</Typography>}
-        </IconButton>
+        <Box
+          sx={{
+            display: "flex",
+            flexDirection: "column",
+            justifyContent: "start",
+          }}
+        >
+          <IconButton onClick={() => setIsDoneBmi(true)}>
+            <SettingsAccessibilityTwoToneIcon />
+            {open && <Typography variant="h6">Body Mass Index</Typography>}
+          </IconButton>
+          <IconButton onClick={() => setIsDoneBasal(true)}>
+            <SelfImprovementIcon />
+            {open && <Typography variant="h6">Basal Metabolism</Typography>}
+          </IconButton>
+        </Box>
       </Drawer>
       <Box component="main" sx={{ flexGrow: 1, p: 3 }}>
         <DrawerHeader />
@@ -117,7 +132,8 @@ export default function MiniDrawer() {
           lorem. Velit sed ullamcorper morbi tincidunt. Lorem donec massa sapien
           faucibus et molestie ac.
         </Typography>
-        {isDone && <BMI />}
+        {setIsDoneBmi && <BMI />}
+        {/* {setIsDoneBasal&&} */}
       </Box>
     </Box>
   );
