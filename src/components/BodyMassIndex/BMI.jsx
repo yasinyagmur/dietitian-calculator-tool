@@ -2,19 +2,31 @@ import {
   Box,
   Button,
   Container,
-  Grid,
   InputAdornment,
   TextField,
   Typography,
 } from "@mui/material";
-import React from "react";
+import { useContext } from "react";
 import { CalculateContext } from "../../context/Calculate";
 
 const BMI = () => {
-  const { setFirstName, setLastName, setAge, setWeight, setHeight } =
-    CalculateContext();
+  const {
+    // setFirstName,
+    // setLastName,
+    setAge,
+    setWeight,
+    setHeight,
+    bmıCal,
+    setSend,
+  } = useContext(CalculateContext);
 
-  const handleSubmit = () => {};
+  // console.log(bmıCal);
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    setSend(true);
+    e.target.reset();
+  };
 
   return (
     <Box component="form" onSubmit={handleSubmit}>
@@ -27,12 +39,16 @@ const BMI = () => {
       >
         <Typography
           variant="h4"
-          sx={{ marginTop: "1rem", marginBottom: "2rem", textAlign: "center" }}
+          sx={{
+            marginTop: "1rem",
+            marginBottom: "2rem",
+            textAlign: "center",
+          }}
         >
           Body Mass Index
         </Typography>
 
-        <Grid container spacing={2} sx={{ justifyContent: "center" }}>
+        {/* <Grid container spacing={2} sx={{ justifyContent: "center" }}>
           <Grid item>
             <TextField
               name="firstName"
@@ -56,7 +72,7 @@ const BMI = () => {
               onChange={(e) => setLastName(e.target.value)}
             />
           </Grid>
-        </Grid>
+        </Grid> */}
         <Box
           sx={{
             display: "flex",
@@ -100,8 +116,9 @@ const BMI = () => {
                 <InputAdornment position="start">cm</InputAdornment>
               ),
             }}
+            helperText="Please enter in centimetres"
           />
-          <Typography sx={{ marginTop: "1rem" }}>BMI : 5</Typography>
+          <Typography sx={{ marginTop: "1rem" }}>BMI : {bmıCal}</Typography>
           <Button
             type="submit"
             variant="contained"
