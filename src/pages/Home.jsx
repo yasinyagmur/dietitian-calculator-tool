@@ -13,9 +13,6 @@ import SettingsAccessibilityTwoToneIcon from "@mui/icons-material/SettingsAccess
 import SelfImprovementIcon from "@mui/icons-material/SelfImprovement";
 import { useState } from "react";
 import BasalMet from "../components/BasalMetabolism/BasalMet";
-import { AuthContext } from "../context/AuthContext";
-import { useContext } from "react";
-import { useNavigate } from "react-router-dom";
 
 const drawerWidth = 240;
 
@@ -67,8 +64,7 @@ const Drawer = styled(MuiDrawer, {
 }));
 
 export default function MiniDrawer() {
-  const [open, setOpen] = React.useState(false);
-  const { currentUser } = useContext(AuthContext);
+  const [open, setOpen] = useState(false);
 
   const handleDrawerOpen = () => {
     setOpen(true);
@@ -89,7 +85,6 @@ export default function MiniDrawer() {
     setIsDoneBasal(true);
     setIsDoneBmi(false);
   };
-  const navigate = useNavigate();
   return (
     <Box sx={{ display: "flex" }}>
       <CssBaseline />
@@ -131,25 +126,11 @@ export default function MiniDrawer() {
       </Drawer>
       <Box component="main" sx={{ flexGrow: 1, p: 3 }}>
         <DrawerHeader />
-        <Typography paragraph>
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-          eiusmod tempor incididunt ut labore et dolore magna aliqua. Rhoncus
-          dolor purus non enim praesent elementum facilisis leo vel. Risus at
-          ultrices mi tempus imperdiet. Semper risus in hendrerit gravida rutrum
-          quisque non tellus. Convallis convallis tellus id interdum velit
-          laoreet id donec ultrices. Odio morbi quis commodo odio aenean sed
-          adipiscing. Amet nisl suscipit adipiscing bibendum est ultricies
-          integer quis. Cursus euismod quis viverra nibh cras. Metus vulputate
-          eu scelerisque felis imperdiet proin fermentum leo. Mauris commodo
-          quis imperdiet massa tincidunt. Cras tincidunt lobortis feugiat
-          vivamus at augue. At augue eget arcu dictum varius duis at consectetur
-          lorem. Velit sed ullamcorper morbi tincidunt. Lorem donec massa sapien
-          faucibus et molestie ac.
-        </Typography>
+
         {/* tıklandığında biri false diğeri true ya dönecek handleClick yazılacak */}
 
         {isDoneBmi && <BMI />}
-        {isDoneBasal && (currentUser ? <BasalMet /> : navigate("/login"))}
+        {isDoneBasal && <BasalMet />}
       </Box>
     </Box>
   );

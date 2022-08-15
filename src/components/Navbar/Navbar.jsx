@@ -9,6 +9,7 @@ import { Typography } from "@mui/material";
 import { useContext } from "react";
 import { AuthContext } from "../../context/AuthContext";
 import { logOut } from "../../auth/firebase";
+import CalculateOutlinedIcon from "@mui/icons-material/CalculateOutlined";
 
 export default function Navbar() {
   const { currentUser } = useContext(AuthContext);
@@ -17,17 +18,26 @@ export default function Navbar() {
   return (
     <Box sx={{ flexGrow: 1 }}>
       <AppBar>
-        <Toolbar sx={{ display: "flex", justifyContent: "space-between" }}>
+        <Toolbar
+          sx={{
+            backgroundColor: "#c3950a",
+            display: "flex",
+            justifyContent: "space-between",
+          }}
+        >
           <IconButton
             size="large"
             edge="start"
             color="inherit"
             aria-label="menu"
             sx={{ ml: 5 }}
+            onClick={() => navigate("/")}
           >
-            {currentUser && (
-              <Typography ml={2}>{currentUser.displayName}</Typography>
-            )}
+            <CalculateOutlinedIcon fontSize="large" />
+            <Typography variant="h5" ml={2}>
+              {" "}
+              Dietitian Calculator
+            </Typography>
           </IconButton>
 
           <Box>
@@ -41,9 +51,25 @@ export default function Navbar() {
                 </Button>
               </>
             ) : (
-              <Button color="inherit" onClick={() => logOut()}>
-                Logout
-              </Button>
+              <Box
+                sx={{
+                  display: "flex",
+                  flexDirection: "row",
+                  alignItems: "center",
+                }}
+              >
+                <Typography sx={{ fontSize: "1rem", fontWeight: "300" }} mr={2}>
+                  {currentUser.displayName}
+                </Typography>
+
+                <Button
+                  color="inherit"
+                  sx={{ fontWeight: "400" }}
+                  onClick={() => logOut()}
+                >
+                  Logout
+                </Button>
+              </Box>
             )}
           </Box>
         </Toolbar>

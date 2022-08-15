@@ -104,7 +104,7 @@ const BasalMet = () => {
           size="small"
           name="age"
           inputProps={{ inputMode: "numeric", pattern: "[0-9]*" }}
-          sx={{ marginTop: "1rem", width: "13rem" }}
+          sx={{ marginTop: "1rem", width: "15rem" }}
           onChange={(e) => setAge(e.target.value)}
         />
 
@@ -112,7 +112,7 @@ const BasalMet = () => {
           required
           label="Please Enter Your Weight"
           id="outlined-start-adornment"
-          sx={{ marginTop: "1rem", width: "13rem" }}
+          sx={{ marginTop: "1rem", width: "15rem" }}
           size="small"
           onChange={(e) => setWeight(e.target.value)}
           InputProps={{
@@ -125,7 +125,7 @@ const BasalMet = () => {
           required
           label="Please Enter Your Height"
           id="outlined-start-adornment"
-          sx={{ marginTop: "1rem", width: "13rem" }}
+          sx={{ marginTop: "1rem", width: "15rem" }}
           size="small"
           onChange={(e) => setHeight(e.target.value)}
           InputProps={{
@@ -144,7 +144,7 @@ const BasalMet = () => {
         <Button
           type="submit"
           variant="contained"
-          sx={{ mt: 3, mb: 1.3, width: "7rem" }}
+          sx={{ mt: 3, mb: 1.3, width: "7rem", backgroundColor: "#c3950a" }}
         >
           <CalculateOutlinedIcon />
           Calculate

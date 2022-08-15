@@ -11,21 +11,12 @@ import { CalculateContext } from "../../context/Calculate";
 import CalculateOutlinedIcon from "@mui/icons-material/CalculateOutlined";
 
 const BMI = () => {
-  const {
-    // setFirstName,
-    // setLastName,
-    setAge,
-    setWeight,
-    setHeight,
-    bmıCal,
-    setSend,
-  } = useContext(CalculateContext);
-
-  // console.log(bmıCal);
+  const { setWeight, setHeight, bmıCal, setSendBmi } =
+    useContext(CalculateContext);
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    setSend(true);
+    setSendBmi(true);
     e.target.reset();
   };
 
@@ -33,7 +24,6 @@ const BMI = () => {
     <Box component="form" onSubmit={handleSubmit}>
       <Container
         sx={{
-          border: "1px solid grey",
           width: "50%",
           minHeight: "50vh",
         }}
@@ -81,22 +71,22 @@ const BMI = () => {
             alignItems: "center",
           }}
         >
-          <TextField
+          {/* <TextField
             required
             id="age"
             label="Age"
             size="small"
             name="age"
             inputProps={{ inputMode: "numeric", pattern: "[0-9]*" }}
-            sx={{ marginTop: "1rem", width: "13rem" }}
+            sx={{ marginTop: "1rem", width: "15rem" }}
             onChange={(e) => setAge(e.target.value)}
-          />
+          /> */}
 
           <TextField
             required
             label="Please Enter Your Weight"
             id="outlined-start-adornment"
-            sx={{ marginTop: "1rem", width: "13rem" }}
+            sx={{ marginTop: "1rem", width: "15rem" }}
             size="small"
             onChange={(e) => setWeight(e.target.value)}
             InputProps={{
@@ -109,7 +99,7 @@ const BMI = () => {
             required
             label="Please Enter Your Height"
             id="outlined-start-adornment"
-            sx={{ marginTop: "1rem", width: "13rem" }}
+            sx={{ marginTop: "1rem", width: "15rem" }}
             size="small"
             onChange={(e) => setHeight(e.target.value)}
             InputProps={{
@@ -123,7 +113,7 @@ const BMI = () => {
           <Button
             type="submit"
             variant="contained"
-            sx={{ mt: 3, mb: 1.3, width: "7rem" }}
+            sx={{ mt: 3, mb: 1.3, width: "7rem", backgroundColor: " #c3950a" }}
           >
             <CalculateOutlinedIcon />
             Calculate

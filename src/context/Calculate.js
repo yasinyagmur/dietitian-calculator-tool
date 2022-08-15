@@ -23,7 +23,7 @@ const CalculateContextProvider = ({ children }) => {
     let w = weight;
     let h = height / 100;
     const bmı = w / (h * h);
-    setBmıCal(bmı);
+    setBmıCal(bmı.toFixed(2));
     setSendBmi(false);
   }
 
@@ -31,11 +31,11 @@ const CalculateContextProvider = ({ children }) => {
     let w = weight;
     let h = height / 100;
     const bmı = w / (h * h);
-    setBmıCal(bmı);
+    setBmıCal(bmı.toFixed(2));
     let a = 6.25 * h;
     let b = 5 * age;
     const basal = w * 10 + a - b + 5;
-    setBasalConc(basal);
+    setBasalConc(basal.toFixed(2));
     setSendBasal(false);
   }
 
