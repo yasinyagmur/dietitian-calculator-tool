@@ -1,6 +1,8 @@
 import {
   Box,
   Button,
+  FormControl,
+  FormLabel,
   InputAdornment,
   Radio,
   RadioGroup,
@@ -11,6 +13,7 @@ import React from "react";
 import CalculateOutlinedIcon from "@mui/icons-material/CalculateOutlined";
 import { useContext } from "react";
 import { CalculateContext } from "../../context/Calculate";
+import FormControlLabel from "@mui/material/FormControlLabel";
 
 const BasalMet = () => {
   const {
@@ -78,26 +81,22 @@ const BasalMet = () => {
           alignItems: "center",
         }}
       >
-        <Typography
-          id="demo-controlled-radio-buttons-group"
-          level="body3"
-          textTransform="uppercase"
-          fontWeight="xl"
-          mb={2}
-        >
-          Gender
-        </Typography>
-        <RadioGroup
-          aria-labelledby="demo-controlled-radio-buttons-group"
-          defaultValue="female"
-          name="controlled-radio-buttons-group"
-          sx={{ display: "flex", flexDirection: "row" }}
-          value={value}
-          onChange={(e) => setValue(e.target.value)}
-        >
-          <Radio value="female" label="Female" />
-          <Radio value="male" label="Male" />
-        </RadioGroup>
+        <FormControl>
+          <FormLabel id="demo-controlled-radio-buttons-group">Gender</FormLabel>
+          <RadioGroup
+            aria-labelledby="demo-controlled-radio-buttons-group"
+            name="controlled-radio-buttons-group"
+            value={value}
+            onChange={(e) => setValue(e.target.value)}
+          >
+            <FormControlLabel
+              value="female"
+              control={<Radio />}
+              label="Female"
+            />
+            <FormControlLabel value="male" control={<Radio />} label="Male" />
+          </RadioGroup>
+        </FormControl>
         <TextField
           required
           id="age"

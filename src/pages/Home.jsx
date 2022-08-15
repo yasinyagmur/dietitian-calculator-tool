@@ -8,12 +8,14 @@ import Divider from "@mui/material/Divider";
 import IconButton from "@mui/material/IconButton";
 import ChevronLeftIcon from "@mui/icons-material/ChevronLeft";
 import ChevronRightIcon from "@mui/icons-material/ChevronRight";
-
 import BMI from "../components/BodyMassIndex/BMI";
 import SettingsAccessibilityTwoToneIcon from "@mui/icons-material/SettingsAccessibilityTwoTone";
 import SelfImprovementIcon from "@mui/icons-material/SelfImprovement";
 import { useState } from "react";
 import BasalMet from "../components/BasalMetabolism/BasalMet";
+import { AuthContext } from "../context/AuthContext";
+import { useContext } from "react";
+import { useNavigate } from "react-router-dom";
 
 const drawerWidth = 240;
 
@@ -66,6 +68,7 @@ const Drawer = styled(MuiDrawer, {
 
 export default function MiniDrawer() {
   const [open, setOpen] = React.useState(false);
+  const { currentUser } = useContext(AuthContext);
 
   const handleDrawerOpen = () => {
     setOpen(true);
@@ -86,6 +89,7 @@ export default function MiniDrawer() {
     setIsDoneBasal(true);
     setIsDoneBmi(false);
   };
+  const navigate = useNavigate();
   return (
     <Box sx={{ display: "flex" }}>
       <CssBaseline />
@@ -143,8 +147,9 @@ export default function MiniDrawer() {
           faucibus et molestie ac.
         </Typography>
         {/* tıklandığında biri false diğeri true ya dönecek handleClick yazılacak */}
+
         {isDoneBmi && <BMI />}
-        {isDoneBasal && <BasalMet />}
+        {isDoneBasal && (currentUser ? <BasalMet /> : navigate("/login"))}
       </Box>
     </Box>
   );
