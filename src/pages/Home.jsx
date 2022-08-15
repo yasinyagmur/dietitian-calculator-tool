@@ -13,6 +13,7 @@ import BMI from "../components/BodyMassIndex/BMI";
 import SettingsAccessibilityTwoToneIcon from "@mui/icons-material/SettingsAccessibilityTwoTone";
 import SelfImprovementIcon from "@mui/icons-material/SelfImprovement";
 import { useState } from "react";
+import BasalMet from "../components/BasalMetabolism/BasalMet";
 
 const drawerWidth = 240;
 
@@ -76,6 +77,15 @@ export default function MiniDrawer() {
 
   const [isDoneBmi, setIsDoneBmi] = useState(false);
   const [isDoneBasal, setIsDoneBasal] = useState(false);
+
+  const handleClickCalculateBmi = () => {
+    setIsDoneBmi(true);
+    setIsDoneBasal(false);
+  };
+  const handleClickCalculateBasal = () => {
+    setIsDoneBasal(true);
+    setIsDoneBmi(false);
+  };
   return (
     <Box sx={{ display: "flex" }}>
       <CssBaseline />
@@ -105,11 +115,11 @@ export default function MiniDrawer() {
             justifyContent: "start",
           }}
         >
-          <IconButton onClick={() => setIsDoneBmi(true)}>
+          <IconButton onClick={handleClickCalculateBmi}>
             <SettingsAccessibilityTwoToneIcon />
             {open && <Typography variant="h6">Body Mass Index</Typography>}
           </IconButton>
-          <IconButton onClick={() => setIsDoneBasal(true)}>
+          <IconButton onClick={handleClickCalculateBasal}>
             <SelfImprovementIcon />
             {open && <Typography variant="h6">Basal Metabolism</Typography>}
           </IconButton>
@@ -132,9 +142,9 @@ export default function MiniDrawer() {
           lorem. Velit sed ullamcorper morbi tincidunt. Lorem donec massa sapien
           faucibus et molestie ac.
         </Typography>
-        {isDoneBmi && <BMI />}
-        {setIsDoneBasal}
         {/* tıklandığında biri false diğeri true ya dönecek handleClick yazılacak */}
+        {isDoneBmi && <BMI />}
+        {isDoneBasal && <BasalMet />}
       </Box>
     </Box>
   );

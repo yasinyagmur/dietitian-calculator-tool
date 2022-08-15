@@ -11,17 +11,32 @@ const CalculateContextProvider = ({ children }) => {
   const [age, setAge] = useState();
   const [weight, setWeight] = useState();
   const [height, setHeight] = useState();
+  //radio button state
+  const [value, setValue] = useState("female");
+
   //useState Context create
   const [bmıCal, setBmıCal] = useState();
-  console.log(bmıCal);
-  // console.log(firstName);
-  const [send, setSend] = useState(false);
-  if (send) {
+  const [basalConc, setBasalConc] = useState();
+  const [sendBmi, setSendBmi] = useState(false);
+  const [sendBasal, setSendBasal] = useState(false);
+  if (sendBmi) {
     let w = weight;
     let h = height / 100;
     const bmı = w / (h * h);
     setBmıCal(bmı);
-    setSend(false);
+    setSendBmi(false);
+  }
+
+  if (sendBasal) {
+    let w = weight;
+    let h = height / 100;
+    const bmı = w / (h * h);
+    setBmıCal(bmı);
+    let a = 6.25 * h;
+    let b = 5 * age;
+    const basal = w * 10 + a - b + 5;
+    setBasalConc(basal);
+    setSendBasal(false);
   }
 
   return (
@@ -31,7 +46,11 @@ const CalculateContextProvider = ({ children }) => {
         setWeight,
         setHeight,
         bmıCal,
-        setSend,
+        setSendBmi,
+        setValue,
+        value,
+        setSendBasal,
+        basalConc,
       }}
     >
       {children}
