@@ -144,7 +144,7 @@ const BasalMet = () => {
         <Button
           type="submit"
           variant="contained"
-          sx={{ mt: 3, mb: 1.3, width: "7rem", backgroundColor: "#c3950a" }}
+          sx={{ mt: 2.5, mb: 1.3, width: "7rem", backgroundColor: "#c3950a" }}
         >
           <CalculateOutlinedIcon />
           Calculate
